@@ -881,3 +881,10 @@ h1 em, h2 em, h3 em, .giant-statement em, .footer-invite em { font-family: var(-
 @media (max-width: 600px) {
   .service-card::after { bottom: 35px; }
 }
+
+/* Keep the full blog hero sentence on desktop; shorten it on phones so the footer copy has room. */
+.mobile-only-blog-suffix { display: inline; }
+
+@media (max-width: 600px) {
+  .mobile-only-blog-suffix { display: none; }
+}
