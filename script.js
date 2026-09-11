@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalList.innerHTML = (data.items || []).map((item) => `<li>${item}</li>`).join("");
         standard.hidden = Boolean(data.custom);
         custom.hidden = !data.custom;
-        if (!data.custom) modalCta.href = `contact.html?service=${encodeURIComponent(data.title)}`;
+        if (!data.custom) modalCta.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hey Seven Circle, I need some help with ${data.title} for my business. when can we talk?`)}`;
         serviceModal.classList.add("is-open");
         serviceModal.setAttribute("aria-hidden", "false");
         document.body.classList.add("no-scroll");
