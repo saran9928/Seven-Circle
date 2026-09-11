@@ -831,3 +831,49 @@ h1 em, h2 em, h3 em, .giant-statement em, .footer-invite em { font-family: var(-
   .blog-post-index { grid-template-columns: 1fr; }
   .blog-card-footer { align-items: flex-start; flex-direction: column; }
 }
+
+/* The full-circle feature cards become a real touch carousel on phones. */
+@media (max-width: 600px) {
+  .services-preview-section .section-heading { margin-bottom: 28px; }
+  .feature-service-grid {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 3px 2px 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
+    scroll-padding-inline: 2px;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+  }
+  .feature-service-grid::-webkit-scrollbar { display: none; }
+  .feature-service-card,
+  .feature-service-card:first-child,
+  .feature-service-card:not(:first-child) {
+    flex: 0 0 calc(100% - 26px);
+    width: calc(100% - 26px);
+    min-height: 410px;
+    margin: 0;
+    scroll-snap-align: start;
+  }
+  .feature-service-card .card-bottom { right: 18px; bottom: 18px; left: 18px; }
+  .feature-service-card .card-bottom h3 { font-size: 31px; }
+  .feature-service-card .round-arrow { flex: 0 0 44px; }
+  .dark-card { padding: 18px; }
+  .signal-art { width: 190px; height: 190px; }
+  .signal-core { inset: 68px; }
+}
+
+@media (max-width: 380px) {
+  .feature-service-card,
+  .feature-service-card:first-child,
+  .feature-service-card:not(:first-child) {
+    flex-basis: calc(100% - 18px);
+    width: calc(100% - 18px);
+  }
+}
