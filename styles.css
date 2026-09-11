@@ -877,3 +877,7 @@ h1 em, h2 em, h3 em, .giant-statement em, .footer-invite em { font-family: var(-
     width: calc(100% - 18px);
   }
 }
+
+@media (max-width: 600px) {
+  .service-card::after { bottom: 35px; }
+}
