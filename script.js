@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (serviceModal) {
     const serviceDetails = {
       branding: { number: "01", title: "Branding", summary: "A brand people remember, not just recognize.", items: ["Logo design", "Brand color palette & typography", "Brand guidelines document", "Business card & letterhead design", "Brand voice & positioning", "Packaging / label design (if applicable)"] },
-      social: { number: "02", title: "Social Media Management", summary: "A social presence that feels alive.", items: ["Content research & trend tracking", "Monthly content calendar", "Post design (feed + stories)", "Reels / short-video editing", "Caption & hashtag writing", "Scheduling & publishing", "Community management (comments / DMs)", "Monthly performance report"] },
+      social: { number: "02", title: "Social Media Management", summary: "A social presence that feels alive.", whatsappMessage: "Hey Seven Circle, can you manage my business's social media pages?", items: ["Content research & trend tracking", "Monthly content calendar", "Post design (feed + stories)", "Reels / short-video editing", "Caption & hashtag writing", "Scheduling & publishing", "Community management (comments / DMs)", "Monthly performance report"] },
       content: { number: "03", title: "Content Creation", summary: "Posters, reels, carousels — on repeat.", items: ["Poster / graphic design", "Reels & short-video production", "Carousel design", "Product shoot direction", "Brand templates (reusable design kits)", "Content repurposing across platforms"] },
       copywriting: { number: "04", title: "Copywriting", summary: "Words that sound like you — only sharper.", items: ["Social captions", "Website copy", "Ad copy", "Product descriptions", "WhatsApp / email broadcast copy", "Brand voice & tone guide"] },
       ads: { number: "05", title: "Paid Advertising", summary: "Better reach. Smarter spend.", items: ["Meta Ads (Instagram / Facebook) setup & management", "Google Ads (Search / Display)", "Audience research & targeting", "Ad creative design", "A/B testing", "Budget optimization", "Monthly ad performance report"] },
@@ -105,7 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
         modalList.innerHTML = (data.items || []).map((item) => `<li>${item}</li>`).join("");
         standard.hidden = Boolean(data.custom);
         custom.hidden = !data.custom;
-        if (!data.custom) modalCta.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hey Seven Circle, I need some help with ${data.title} for my business. when can we talk?`)}`;
+        if (!data.custom) {
+          const message = data.whatsappMessage || `Hey Seven Circle, I need some help with ${data.title} for my business. when can we talk?`;
+          modalCta.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        }
         serviceModal.classList.add("is-open");
         serviceModal.setAttribute("aria-hidden", "false");
         document.body.classList.add("no-scroll");
