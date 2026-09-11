@@ -1,4 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const botpressInjectUrl = "https://cdn.botpress.cloud/webchat/v3.7/inject.js";
+  const botpressConfigUrl = "https://files.bpcontent.cloud/2026/09/09/22/20260909221142-QXLQVY1Y.js";
+
+  const loadBotpress = () => {
+    if (document.querySelector(`script[src="${botpressConfigUrl}"]`)) return;
+    const injectScript = document.createElement("script");
+    injectScript.src = botpressInjectUrl;
+    injectScript.onload = () => {
+      const configScript = document.createElement("script");
+      configScript.src = botpressConfigUrl;
+      configScript.defer = true;
+      document.head.appendChild(configScript);
+    };
+    document.head.appendChild(injectScript);
+  };
+
+  loadBotpress();
+
   const whatsappNumber = "919567931726";
   const whatsappMessage = "Hey Seven Circle, I need some help getting my business out there more. How do your packages work?";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
