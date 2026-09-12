@@ -1,12 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   const botpressInjectUrl = "https://cdn.botpress.cloud/webchat/v3.7/inject.js";
   const botpressConfigUrl = "https://files.bpcontent.cloud/2026/09/09/22/20260909221142-QXLQVY1Y.js";
+  const botpressIdentity = { botName: "Lychee" };
+
+  const applyBotpressIdentity = () => {
+    if (window.botpress?.config) window.botpress.config({ configuration: botpressIdentity });
+  };
 
   const loadBotpress = () => {
     if (document.querySelector(`script[src="${botpressConfigUrl}"]`)) return;
     const injectScript = document.createElement("script");
     injectScript.src = botpressInjectUrl;
     injectScript.onload = () => {
+      window.botpress?.on?.("webchat:initialized", applyBotpressIdentity);
       const configScript = document.createElement("script");
       configScript.src = botpressConfigUrl;
       configScript.defer = true;
